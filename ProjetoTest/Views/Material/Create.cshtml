@@ -1,0 +1,49 @@
+﻿@model Material
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Criar Material</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="Name">Nome Do Material</label>
+            <input asp-for="Name" placeholder="Nome do Material" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Code">Codigo do Material</label>
+            <input asp-for="Code" placeholder="Codigo do Material" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SupplierId"> Nome do Fornecedor</label>
+            <input asp-for="SupplierId" placeholder="Nome do Fornecedor" class="form-control" />
+            <span asp-validation-for="SupplierId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">Descrição do material</label>
+            <input asp-for="Description" placeholder="Descrição do Material" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FiscalCode">Código fiscal do material</label>
+            <input asp-for="FiscalCode" placeholder="Codigo Fiscal do Material" class="form-control" />
+            <span asp-validation-for="FiscalCode" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="Specie">Specie do Material</label>
+            <input asp-for="Specie" placeholder="Specie do Material" class="form-control" />
+            <span asp-validation-for="Specie" class="text-danger"></span>
+        </div>
+            <button type="submit" class="btn btn-primary" style="width:150px">Criar</button>
+            <a asp-controller="Material" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar a Lista</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

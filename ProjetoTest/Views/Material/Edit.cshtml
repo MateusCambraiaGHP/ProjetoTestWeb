@@ -1,0 +1,47 @@
+﻿@model Material
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="Name">Nome do Material</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Code">Codigo do Material</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SupplierId">Nome do Fornecedor</label>
+            <input asp-for="SupplierId" class="form-control" />
+            <span asp-validation-for="SupplierId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">Descrição do Material</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FiscalCode">Codigo Fiscal do Material</label>
+            <input asp-for="FiscalCode" class="form-control" />
+            <span asp-validation-for="FiscalCode" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="Specie">Specie do Material</label>
+            <input asp-for="Specie" class="form-control" />
+            <span asp-validation-for="Specie" class="text-danger"></span>
+        </div>
+            <button type="submit" class="btn btn-primary" style="width:150px">Editar</button>
+            <a asp-controller="Material" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar a Lista</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

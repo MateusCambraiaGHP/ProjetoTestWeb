@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Material>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de Materiais</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Material" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Material
+            </a>
+        </div>
+    </div>
+    <br /><br />
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Nome do Material
+                </th>
+                <th>
+                    Fornecedor
+                </th>
+                <th>
+                    Codigo
+                </th>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Codigo Fiscal
+                </th>
+                <th>
+                    Specie
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="15%">
+                        @obj.Name
+                    </td>
+                    <td width="15%">
+                        @obj.SupplierId
+                    </td>
+                    <td width="6%">
+                        @obj.Code
+                    </td>
+                    <td width="28%">
+                        @obj.Description
+                    </td>
+                    <td width="13%">
+                        @obj.FiscalCode
+                    </td>
+                    <td width="12%">
+                        @obj.Specie
+                    </td>
+                    <td>
+                        <div class="w-76 btn-group" role="group">
+                        <a asp-controller="Material" asp-action="Edit" asp-route-id="@obj.Id"
+                        class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
+                        <a asp-controller="Material" asp-action="Delete" asp-route-id="@obj.Id"
+                        class="btn btn-danger mx-2" ><i class="bi bi-trash3"></i> Deletar</a>
+                        </div>
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
