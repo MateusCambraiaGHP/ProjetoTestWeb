@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjetoTest.Interfaces;
 using ProjetoTest.Models;
@@ -16,11 +17,12 @@ namespace ProjetoTest.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Material> objCategories = _db.Material.ToList();
-            return View(objCategories);
+            IEnumerable<Material> objMaterial = _db.Material.AsNoTracking().Include(m => m.Supplier).ToList();
+            return View(objMaterial);
         }
         public IActionResult Create()
         {
+            Fill();
             return View();
         }
 
@@ -47,6 +49,7 @@ namespace ProjetoTest.Controllers
             {
                 return NotFound();
             }
+            Fill();
             return View(materialFromDb);
         }
         [HttpPost]
@@ -54,10 +57,10 @@ namespace ProjetoTest.Controllers
         public IActionResult Edit(Material obj)
         {
             if (ModelState.IsValid)
-                 _db.Material.Update(obj);
-                   _db.Save();
-                 TempData["success"] = "Material editado com sucesso.";
-                 return RedirectToAction("Index");
+                _db.Material.Update(obj);
+            _db.Save();
+            TempData["success"] = "Material editado com sucesso.";
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
@@ -66,6 +69,7 @@ namespace ProjetoTest.Controllers
             {
                 return NotFound();
             }
+            
             var materialFromDb = _db.Material.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
 
             if (materialFromDb == null)
@@ -78,7 +82,7 @@ namespace ProjetoTest.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int? id)
         {
-            var obj = _db.Material.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
+            var obj = _db.Material.Where(c => c.Id == id).FirstOrDefault();
 
             if (obj == null)
             {
@@ -88,6 +92,12 @@ namespace ProjetoTest.Controllers
             _db.Save();
             TempData["success"] = "Material apagado com sucesso.";
             return RedirectToAction("Index");
+        }
+
+        private void Fill()
+        {
+            var suppliers = _db.Supplier.AsNoTracking().ToList();
+            ViewBag.Supplier = suppliers.Select(c => new SelectListItem {Value = c.Id.ToString(), Text = c.NameSupplier});
         }
     }
 }

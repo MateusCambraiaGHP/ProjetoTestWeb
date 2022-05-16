@@ -37,5 +37,7 @@ namespace ProjetoTest.Models
         [Column(TypeName = "varchar(45)")]
         public string UpdatedBy { get; set; } = "Adminstrador";
 
+        public Supplier Supplier { get; set; }
+
     }
 }

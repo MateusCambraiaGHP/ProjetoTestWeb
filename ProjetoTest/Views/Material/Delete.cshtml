@@ -16,10 +16,16 @@
             <span asp-validation-for="Code" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label asp-for="SupplierId"> Nome do Fornecedor</label>
+            <select class="form-select" disabled aria-label="Default select example"  asp-for="SupplierId" asp-items="ViewBag.Supplier" class="form-control">
+            </select>
+            <span asp-validation-for="SupplierId" class="text-danger"></span>
+        </div>
+       @* <div class="mb-3">
             <label asp-for="SupplierId">Nome do Fornecedor</label>
             <input asp-for="SupplierId" disabled class="form-control" />
             <span asp-validation-for="SupplierId" class="text-danger"></span>
-        </div>
+        </div>*@
         <div class="mb-3">
             <label asp-for="Description">Descrição do Material</label>
             <input asp-for="Description" disabled class="form-control" />

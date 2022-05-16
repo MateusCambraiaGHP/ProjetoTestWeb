@@ -13,27 +13,20 @@
             <span asp-validation-for="NameSupplier" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="CNPJ">CNPJ do Fornecedor</label>
+            <label asp-for="CNPJ" >CNPJ do Fornecedor</label>
             <input asp-for="CNPJ" placeholder="CNPJ do fornecedor" class="form-control" />
             <span asp-validation-for="CNPJ" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Cep">Cep Do Fornecedor</label>
-            <input asp-for="Cep" placeholder="Cep do fornecedor" class="form-control" />
+            <label asp-for="Cep" id="cep">Cep Do Fornecedor</label>
+            <input asp-for="Cep"  placeholder="Cep do fornecedor" class="form-control" />
             <span asp-validation-for="Cep" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="QrCode">Variáveis do QrCode</label>
-            
-            <select class="form-select"  aria-label="Default select example" asp-for="QrCode" class="form-control">
-        <option>%CNPJ% / %CEP% - %DATACADASTRO%</option>
-        <option>%CNPJ% / %CEP%</option>
-        <option>%CNPJ% / %DATACADASTRO%</option>
-        <option>%CEP% - %DATACADASTRO%</option>
-        <option>%CNPJ%</option>
-        <option>%CEP%</option>
-        <option>%DATACADASTRO%</option>
-        </select>
+            <label asp-for="QrCode">Variáveis do QrCode</label>    
+            <select class="form-select"  aria-label="Default select example" asp-for="QrCode" asp-items="ViewBag.QrCodeVariables" class="form-control">
+            <option>Nenhum</option>
+            </select>
             <span asp-validation-for="QrCode" class="text-danger"></span>
         </div>
 
