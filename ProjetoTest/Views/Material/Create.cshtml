@@ -19,7 +19,9 @@
         </div>
         <div class="mb-3">
             <label asp-for="SupplierId"> Nome do Fornecedor</label>
-            <input asp-for="SupplierId" placeholder="Nome do Fornecedor" class="form-control" />
+            <select class="form-select"  aria-label="Default select example" asp-for="SupplierId" asp-items="ViewBag.Supplier" class="form-control">
+                <option value="">Nenhum</option>
+            </select>
             <span asp-validation-for="SupplierId" class="text-danger"></span>
         </div>
         <div class="mb-3">

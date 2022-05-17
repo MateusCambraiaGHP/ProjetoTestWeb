@@ -32,10 +32,12 @@ namespace ProjetoTest.Models
         public string CreatedBy { get; set; } = "Adminstrador";
         
         [Column(TypeName = "datetime")]
-        public DateTime? UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime? UpdatedAt { get; set; } 
 
         [Column(TypeName = "varchar(45)")]
         public string UpdatedBy { get; set; } = "Adminstrador";
+
+        public Supplier Supplier { get; set; }
 
     }
 }
