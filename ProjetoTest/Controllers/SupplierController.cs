@@ -49,7 +49,6 @@ namespace ProjetoTest.Controllers
             {
                 return NotFound();
             }
-
             return View(supplierFromDb);
         }
 

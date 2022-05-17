@@ -56,11 +56,11 @@ namespace ProjetoTest.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Material obj)
         {
-            if (ModelState.IsValid)
+                obj.UpdatedAt = DateTime.Now;
                 _db.Material.Update(obj);
-            _db.Save();
-            TempData["success"] = "Material editado com sucesso.";
-            return RedirectToAction("Index");
+                _db.Save();
+                TempData["success"] = "Material editado com sucesso.";
+                return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
@@ -69,13 +69,13 @@ namespace ProjetoTest.Controllers
             {
                 return NotFound();
             }
-            
             var materialFromDb = _db.Material.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
 
             if (materialFromDb == null)
             {
                 return NotFound();
             }
+            Fill();
             return View(materialFromDb);
         }
         [HttpPost]

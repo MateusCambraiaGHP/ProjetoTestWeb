@@ -14,7 +14,7 @@ namespace ProjetoTest.Models
         [Column(TypeName = "varchar(45)")]
         public string Cep { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime DataCadastro { get; set; }
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
         [Column(TypeName = "varchar(120)")]
         public string QrCode { get; set; }
     }
